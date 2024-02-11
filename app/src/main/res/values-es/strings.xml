@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Generador de Números Aleatorio</string>
+    <string name="home_regenerate">Volver a generar</string>
+</resources>

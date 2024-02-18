@@ -6,6 +6,7 @@ plugins {
 android {
     namespace = "es.romeronet.randomnumbergenerator"
     compileSdk = 34
+    buildToolsVersion = "35-rc1"
 
     defaultConfig {
         applicationId = "es.romeronet.randomnumbergenerator"

@@ -6,6 +6,7 @@ plugins {
 android {
     namespace = "es.romeronet.randomnumbergenerator"
     compileSdk = 34
+    buildToolsVersion = "35-rc1"
 
     defaultConfig {
         applicationId = "es.romeronet.randomnumbergenerator"
@@ -40,7 +41,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.9-dev-k2.0.0-Beta3-7c5ec6895a0"
+        kotlinCompilerExtensionVersion = "1.5.11-dev-k2.0.0-Beta4-21f5e479a96"
     }
     packaging {
         resources {

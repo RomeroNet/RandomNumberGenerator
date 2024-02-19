@@ -1,0 +1,32 @@
+name: Run tests
+
+on: [push, pull_request, workflow_dispatch]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Run build & test
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/romeronet/base-images/android-sdk:latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Gradle cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.gradle
+          key: gradle
+
+      - name: Gradle build cache
+        uses: actions/cache@v4
+        with:
+          path: .gradle
+          key: gradle-build
+
+      - name: Build app & run unit tests
+        run: ./gradlew build

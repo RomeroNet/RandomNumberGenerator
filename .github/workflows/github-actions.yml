@@ -6,15 +6,66 @@ permissions:
   contents: read
 
 jobs:
+  prepare-sdk:
+    name: Download Android SDK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: SDK cache
+        id: cache-sdk
+        uses: actions/cache@v4
+        with:
+          path: ~/android_sdk
+          key: android-sdk
+          lookup-only: true
+
+      - name: Download Android SDK
+        if: steps.cache-sdk.outputs.cache-hit != 'true'
+        run: |
+          mkdir ~/android_sdk
+          cd ~/android_sdk
+          curl https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip -o sdk.zip
+          unzip sdk.zip
+          cd cmdline-tools
+          mkdir latest
+          mv lib bin NOTICE.txt source.properties latest
+
+      - name: Accept licenses
+        if: steps.cache-sdk.outputs.cache-hit != 'true'
+        run: yes | ~/android_sdk/cmdline-tools/latest/bin/sdkmanager --licenses
+
+      - name: Install required packages
+        if: steps.cache-sdk.outputs.cache-hit != 'true'
+        run: |
+          ~/android_sdk/cmdline-tools/latest/bin/sdkmanager \
+          "build-tools;35.0.0-rc1" \
+          "platforms;android-34" \
+          "sources;android-34" \
+          "platform-tools"
+
   test:
     name: Run build & test
     runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/romeronet/base-images/android-sdk:latest
+    needs: prepare-sdk
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: SDK cache
+        uses: actions/cache@v4
+        with:
+          path: ~/android_sdk
+          key: android-sdk
 
       - name: Gradle cache
         uses: actions/cache@v4
@@ -28,5 +79,11 @@ jobs:
           path: .gradle
           key: gradle-build
 
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Build app & run unit tests
-        run: ./gradlew build
+        run: |
+          export ANDROID_HOME=~/android_sdk
+          export ANDROID_SDK_ROOT=~/android_sdk
+          ./gradlew build

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.kover)
 }
 
 android {
@@ -46,6 +47,18 @@ android {
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
+}
+
+koverReport {
+    androidReports("release") {
+        xml {
+            onCheck = true
+        }
+
+        html {
+            onCheck = true
         }
     }
 }

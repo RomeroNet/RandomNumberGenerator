@@ -82,8 +82,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Build app & run unit tests
+      - name: Build app & run unit tests with coverage
         run: |
           export ANDROID_HOME=~/android_sdk
           export ANDROID_SDK_ROOT=~/android_sdk
-          ./gradlew build
+          ./gradlew check
+
+      - name: Upload code coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          fail_ci_if_error: true
+          file: ./app/build/reports/kover/reportRelease.xml
+          token: ${{ secrets.CODECOV_TOKEN }}
+          verbose: true

@@ -18,6 +18,8 @@ class GenerateRandomNumbers {
             usedNumbers += number
             result += Number(number)
         }
+
+        result.sort()
         return result
     }
 

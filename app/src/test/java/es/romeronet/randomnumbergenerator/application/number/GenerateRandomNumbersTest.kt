@@ -35,4 +35,16 @@ class GenerateRandomNumbersTest {
 
         Assert.assertEquals(5, filteredNumbers.size)
     }
+
+    @Test
+    fun itShouldGenerateOrderedNumbers() {
+        val numbers = GenerateRandomNumbers().generate(5, 5)
+
+        Assert.assertEquals(1, numbers[0].value)
+        Assert.assertEquals(2, numbers[1].value)
+        Assert.assertEquals(3, numbers[2].value)
+        Assert.assertEquals(4, numbers[3].value)
+        Assert.assertEquals(5, numbers[4].value)
+
+    }
 }

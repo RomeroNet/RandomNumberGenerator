@@ -6,4 +6,8 @@ import es.romeronet.randomnumbergenerator.domain.number.Number
 
 object Numbers {
     var numbers: MutableState<Array<Number>> = mutableStateOf(arrayOf())
+
+    fun reset() {
+        numbers = mutableStateOf(arrayOf())
+    }
 }

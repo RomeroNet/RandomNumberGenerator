@@ -1,9 +1,7 @@
 package es.romeronet.randomnumbergenerator.application.number
 
-import org.hamcrest.CoreMatchers.`is`
-import org.hamcrest.MatcherAssert.assertThat
-import org.hamcrest.Matchers.arrayWithSize
-import org.junit.jupiter.api.Test
+import org.junit.Assert.assertEquals
+import org.junit.Test
 
 class GenerateRandomNumbersTest {
 
@@ -11,6 +9,6 @@ class GenerateRandomNumbersTest {
     fun itShouldGenerateNumbers() {
         val numbers = GenerateRandomNumbers().generate(5)
 
-        assertThat(numbers, `is`(arrayWithSize(5)))
+        assertEquals(numbers.size, 5)
     }
 }

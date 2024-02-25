@@ -1,20 +1,22 @@
 [versions]
-agp = "8.4.0-alpha10"
+agp = "8.4.0-alpha11"
 kotlin = "2.0.0-Beta4"
 coreKtx = "1.13.0-alpha05"
-hamcrest = "2.2"
-junit = "5.10.2"
+junit = "4.13.2"
 junitVersion = "1.2.0-alpha03"
+robolectric = "4.11.1"
+test-manifest = "1.7.0-alpha03"
+kover = "0.7.6"
 espressoCore = "3.6.0-alpha03"
 lifecycleRuntimeKtx = "2.8.0-alpha01"
 activityCompose = "1.9.0-alpha03"
-composeBom = "2024.02.00"
+composeBom = "2024.02.01"
+android-tracing = "1.2.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-junit-jupiter-api = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "junit" }
-junit-jupiter-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junit" }
-hamcrest = { group = "org.hamcrest", name = "hamcrest", version.ref = "hamcrest" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+robolectric = { group = "org.robolectric", name = "robolectric", version.ref = "robolectric" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
@@ -24,11 +26,13 @@ androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
-androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest", version.ref="test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+android-tracing = { group = "androidx.tracing", name = "tracing", version.ref = "android-tracing" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
 

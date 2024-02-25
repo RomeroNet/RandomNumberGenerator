@@ -15,7 +15,6 @@
         <activity
             android:name=".infrastructure.activity.MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.RandomNumberGenerator">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

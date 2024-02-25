@@ -14,6 +14,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import es.romeronet.randomnumbergenerator.application.number.GenerateRandomNumbers
@@ -45,8 +46,10 @@ fun Numbers() {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Row(
-                    modifier = Modifier.fillMaxWidth(0.8f),
-                    horizontalArrangement = Arrangement.SpaceEvenly
+                    modifier = Modifier
+                        .fillMaxWidth(0.8f)
+                        .testTag("NumbersRow"),
+                    horizontalArrangement = Arrangement.SpaceEvenly,
                 ) {
                     for (number in NumbersState.numbers.value) {
                         Number().Print(number)
@@ -56,7 +59,8 @@ fun Numbers() {
                     modifier = Modifier
                         .fillMaxWidth(0.8f)
                         .padding(top = 40.dp)
-                        .fillMaxWidth(),
+                        .fillMaxWidth()
+                        .testTag("ButtonRow"),
                     horizontalArrangement = Arrangement.Center
                 ) {
                     RegenerateButton().Print()

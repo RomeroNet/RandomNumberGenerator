@@ -1,0 +1,3 @@
+ignore:
+  - "app/src/main/java/es/romeronet/randomnumbergenerator/infrastructure"
+  - "app/src/main/java/es/romeronet/randomnumbergenerator/ui"

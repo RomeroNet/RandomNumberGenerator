@@ -12,6 +12,7 @@ lifecycleRuntimeKtx = "2.8.0-alpha01"
 activityCompose = "1.9.0-alpha03"
 composeBom = "2024.02.01"
 android-tracing = "1.2.0"
+navigation = "2.8.0-alpha03"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -30,6 +31,7 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 android-tracing = { group = "androidx.tracing", name = "tracing", version.ref = "android-tracing" }
+compose-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

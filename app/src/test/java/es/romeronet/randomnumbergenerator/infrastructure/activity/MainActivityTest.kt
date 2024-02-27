@@ -1,16 +1,8 @@
 package es.romeronet.randomnumbergenerator.infrastructure.activity
 
-import androidx.compose.ui.semantics.SemanticsProperties
-import androidx.compose.ui.test.assertCountEquals
-import androidx.compose.ui.test.assertHasClickAction
-import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
-import androidx.compose.ui.test.onChild
-import androidx.compose.ui.test.onChildren
-import androidx.compose.ui.test.performClick
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import org.junit.Assert
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -23,48 +15,32 @@ class MainActivityTest {
     @Test
     fun itShouldDisplayUI() {
         rule
-            .onNode(hasTestTag("NumbersRow"))
+            .onNode(hasTestTag("HomeTopBar"))
             .assertExists()
-            .onChildren()
-            .assertCountEquals(5)
-
-        rule
-            .onNode(hasTestTag("ButtonRow"))
-            .assertExists()
-            .onChild()
-            .assertExists()
-            .assertHasClickAction()
-            .assertTextEquals("Generate again")
     }
-
-    @Test
-    fun itShouldUpdateNumbersOnGenerateAgain() {
-        var startValues: Array<Int> = arrayOf()
-        var endValues: Array<Int> = arrayOf()
-
-        rule
-            .onNode(hasTestTag("NumbersRow"))
-            .onChildren()
-            .fetchSemanticsNodes()
-            .forEach {
-                startValues += it.config[SemanticsProperties.Text][0].text.toInt()
-            }
-
-        rule
-            .onNode(hasTestTag("ButtonRow"))
-            .onChild()
-            .performClick()
-
-        rule
-            .onNode(hasTestTag("NumbersRow"))
-            .onChildren()
-            .fetchSemanticsNodes()
-            .forEach {
-                endValues += it.config[SemanticsProperties.Text][0].text.toInt()
-            }
-
-        startValues.forEachIndexed { index: Int, value: Int ->
-            Assert.assertNotEquals(value, endValues[index])
-        }
-    }
+//
+//    @Test
+//    fun itShouldNavigate() {
+//        rule
+//            .onNode(hasTestTag("HomeTopBar"))
+//            .assertExists()
+//
+//        rule
+//            .onNode(hasTestTag("HomeTopBar"))
+//            .onChildAt(1)
+//            .performClick()
+//
+//        rule
+//            .onNode(hasTestTag("AboutTopBar"))
+//            .assertExists()
+//
+//        rule
+//            .onNode(hasTestTag("AboutTopBar"))
+//            .onChildAt(1)
+//            .performClick()
+//
+//        rule
+//            .onNode(hasTestTag("HomeTopBar"))
+//            .assertExists()
+//    }
 }

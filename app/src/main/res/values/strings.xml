@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Random Number Generator</string>
     <string name="home_regenerate">Generate again</string>
+    <string name="home_info_button">About this app</string>
 </resources>

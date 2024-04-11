@@ -3,12 +3,27 @@ package es.romeronet.randomnumbergenerator.application.number
 import es.romeronet.randomnumbergenerator.domain.number.Number
 
 class GenerateRandomNumbers {
-    fun generate(count: Int): Array<Number>
+    fun generate(count: Int, max: Int = 90): Array<Number>
     {
-        var result = emptyArray<Number>()
+        var result: Array<Number> = arrayOf()
+        var usedNumbers : Array<Int> = arrayOf()
+
         for (i in 0..<count) {
-            result += Number((1..90).random())
+            var number: Int
+
+            do {
+                number = generateInt(max)
+            } while (number in usedNumbers)
+
+            usedNumbers += number
+            result += Number(number)
         }
+
+        result.sort()
         return result
+    }
+
+    private fun generateInt(max: Int): Int {
+        return (1..max).random()
     }
 }

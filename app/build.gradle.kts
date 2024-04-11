@@ -14,8 +14,8 @@ android {
         applicationId = "es.romeronet.randomnumbergenerator"
         minSdk = 24
         targetSdk = 34
-        versionCode = 200
-        versionName = "0.2.0"
+        versionCode = 10000
+        versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {

@@ -1,16 +1,16 @@
 [versions]
-agp = "8.4.0-alpha11"
-kotlin = "2.0.0-Beta4"
-coreKtx = "1.13.0-alpha05"
+agp = "8.5.0-alpha05"
+kotlin = "2.0.0-Beta5"
+coreKtx = "1.13.0-rc01"
 junit = "4.13.2"
 junitVersion = "1.2.0-alpha03"
 robolectric = "4.11.1"
-test-manifest = "1.7.0-alpha03"
+test-manifest = "1.7.0-alpha06"
 kover = "0.7.6"
 espressoCore = "3.6.0-alpha03"
-lifecycleRuntimeKtx = "2.8.0-alpha01"
-activityCompose = "1.9.0-alpha03"
-composeBom = "2024.02.01"
+lifecycleRuntimeKtx = "2.8.0-alpha04"
+activityCompose = "1.9.0-rc01"
+composeBom = "2024.04.00"
 android-tracing = "1.2.0"
 
 [libraries]

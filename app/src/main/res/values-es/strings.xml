@@ -3,4 +3,5 @@
     <string name="app_name">Generador de Números Aleatorio</string>
     <string name="home_regenerate">Volver a generar</string>
     <string name="home_info_button">Acerca de esta aplicación</string>
+    <string name="about_app_icon">Icono de la aplicación</string>
 </resources>

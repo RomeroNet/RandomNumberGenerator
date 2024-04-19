@@ -1,4 +1,4 @@
-package es.romeronet.randomnumbergenerator.ui.theme
+package es.romeronet.randomnumbergenerator.infrastructure.ui
 
 import androidx.compose.ui.graphics.Color
 

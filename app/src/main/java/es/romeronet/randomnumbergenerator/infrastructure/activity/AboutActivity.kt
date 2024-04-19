@@ -4,7 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -21,10 +22,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import es.romeronet.randomnumbergenerator.R
 import es.romeronet.randomnumbergenerator.infrastructure.routing.RoutingState
-import es.romeronet.randomnumbergenerator.ui.theme.RandomNumberGeneratorTheme
+import es.romeronet.randomnumbergenerator.infrastructure.ui.RandomNumberGeneratorTheme
 
 class AboutActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,12 +47,16 @@ fun About() {
                 AboutTopBar()
             }
         ) { innerPadding ->
-            Column(
+            Row(
                 modifier = Modifier
                     .padding(innerPadding)
                     .testTag("Column")
             ) {
-                Text("hihi")
+                Image(
+                    modifier = Modifier.fillMaxSize(0.4f),
+                    painter = painterResource(id = R.drawable.app_icon),
+                    contentDescription = LocalContext.current.getString(R.string.about_app_icon)
+                )
             }
         }
     }

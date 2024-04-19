@@ -28,12 +28,12 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import es.romeronet.randomnumbergenerator.R
-import es.romeronet.randomnumbergenerator.application.number.GenerateRandomNumbers
 import es.romeronet.randomnumbergenerator.infrastructure.component.Number
 import es.romeronet.randomnumbergenerator.infrastructure.component.RegenerateButton
+import es.romeronet.randomnumbergenerator.infrastructure.dependencies.Injector
 import es.romeronet.randomnumbergenerator.infrastructure.routing.Routes
 import es.romeronet.randomnumbergenerator.infrastructure.routing.RoutingState
-import es.romeronet.randomnumbergenerator.ui.theme.RandomNumberGeneratorTheme
+import es.romeronet.randomnumbergenerator.infrastructure.ui.RandomNumberGeneratorTheme
 import es.romeronet.randomnumbergenerator.domain.state.Numbers as NumbersState
 
 class NumbersActivity : ComponentActivity() {
@@ -46,7 +46,6 @@ class NumbersActivity : ComponentActivity() {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Numbers() {
     fillStateIfEmpty()
@@ -93,32 +92,34 @@ fun Numbers() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NumbersTopBar() {
-    TopAppBar(
-        modifier = Modifier.testTag("HomeTopBar"),
-        colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer,
-            titleContentColor = MaterialTheme.colorScheme.primary,
-        ),
-        title = {
-            Text(LocalContext.current.getString(R.string.app_name))
-        },
-        actions = {
-            IconButton(onClick = {
-                RoutingState.navController.navigate(Routes.About.value)
-            }) {
-                Icon(
-                    imageVector = Icons.Filled.Info,
-                    contentDescription = LocalContext.current.getString(R.string.home_info_button)
-                )
+    RandomNumberGeneratorTheme {
+        TopAppBar(
+            modifier = Modifier.testTag("HomeTopBar"),
+            colors = TopAppBarDefaults.topAppBarColors(
+                containerColor = MaterialTheme.colorScheme.primaryContainer,
+                titleContentColor = MaterialTheme.colorScheme.primary,
+            ),
+            title = {
+                Text(LocalContext.current.getString(R.string.app_name))
+            },
+            actions = {
+                IconButton(onClick = {
+                    RoutingState.navController.navigate(Routes.About.value)
+                }) {
+                    Icon(
+                        imageVector = Icons.Filled.Info,
+                        contentDescription = LocalContext.current.getString(R.string.home_info_button)
+                    )
+                }
             }
-        }
-    )
+        )
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun NumbersPreview() {
-    NumbersState.numbers.value = GenerateRandomNumbers().generate(5)
+    NumbersState.numbers.value = Injector.generateRandomNumbers.generate(5)
     Numbers()
 }
 
@@ -126,6 +127,6 @@ fun fillStateIfEmpty() {
     val state = NumbersState.numbers.value
 
     if (state.isEmpty()) {
-        NumbersState.numbers.value = GenerateRandomNumbers().generate(5)
+        NumbersState.numbers.value = Injector.generateRandomNumbers.generate(5)
     }
 }
